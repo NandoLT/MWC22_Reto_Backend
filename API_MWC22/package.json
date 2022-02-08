@@ -8,7 +8,6 @@
     "initDB": "node ./utils/initDB/initDB.js"
   },
   "dependencies": {
-    "axios": "^0.25.0",
     "cookie-parser": "~1.4.4",
     "cross-env": "^7.0.3",
     "debug": "~2.6.9",
