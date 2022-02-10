@@ -1,5 +1,10 @@
 ## API MWC22
 ------------------------------------------------
+> Execute all command in root directory
+### Load data to DB
+```
+$ npm run initDB 
+```
 ### Run api
 ```
 $ npm start
