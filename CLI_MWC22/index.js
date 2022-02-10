@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 require('dotenv').config();
 const inquirer = require('inquirer');
+inquirer.registerPrompt("date", require("inquirer-date-prompt"));
 const { COMMANDS } = require('./helpers');
 
 //llamar servicio de datos
@@ -14,21 +15,21 @@ const args = params.slice(2);
 const command = args[0];
 
 const queryParams = () => {
-    const qs = [
+    let qs = [
         {
             name: 'name',
             type: 'input',
-            message: 'Escribe el nombre del desarrollador/a'
+            message: 'Developer`s name:'
         },
         {
             name: 'email',
             type: 'input',
-            message: 'Escribe el email del desarrollador/a'
+            message: 'Developer`s email:'
         },
         {
             name: 'category',
             type: 'list',
-            message: 'Selecciona categoría: ',
+            message: 'Select category: ',
             choices: [
             'Front',
             'Back',
@@ -39,14 +40,16 @@ const queryParams = () => {
         {
             name: 'phone',
             type: 'input',
-            message: 'Escribe el teléfono del desarrollador/a'
+            message: 'Developer`s phone:'
         },
         {
             name: 'date',
-            type: 'input',
-            message: 'Escribe el día de asistencia a MWC del desarrollador/a [formato: Mes Día, Año || Ej: Mar 2, 2021',
+            type: 'date',
+            format: { month: 'short', hour: undefined, minute: undefined },
+            message: 'Developer MWC Attendance Day: (use arrows -> <- and up/down)'
         }
     ];
+
     return inquirer.prompt(qs);
 };
 
